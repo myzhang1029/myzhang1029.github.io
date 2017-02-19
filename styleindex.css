@@ -1,7 +1,6 @@
 p{
  font-size:20px;
- background-color:yellow;
- padding:30px;
+ font-family:arial;
  }
 
 h1{
@@ -15,24 +14,11 @@ pre, code {
 }
 
 pre {
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
-    border-width: 1px;
-    border-color: white;
-    border-style: solid;
-    padding: 0.6em;
-    padding-left: 1em;
-    margin-left: 5%;
-    margin-right: 8%;
-    background-color: white;
-    overflow: auto;
-    color: black;
+    font-size:20px;
+    font-family:arial;
 }
 
 a{
+    font-size:20px
     color:green;
 }
