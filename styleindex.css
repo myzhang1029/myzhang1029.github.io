@@ -22,7 +22,7 @@ pre {
     -webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
     border-width: 1px;
-    border-color: rgb(16,48,0);
+    border-color: white;
     border-style: solid;
     padding: 0.6em;
     padding-left: 1em;
@@ -30,5 +30,9 @@ pre {
     margin-right: 8%;
     background-color: rgb(55,39,0);
     overflow: auto;
-    color: rgb(255,183,0);
+    color: black;
+}
+
+a{
+    color:green;
 }
