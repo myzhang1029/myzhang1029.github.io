@@ -5,11 +5,9 @@
  <script>
   function sayYouAreFooled()
   {
-   x=document.getElementById("fooled");
-   y=document.getElementById("nm");
-   x.style.color="red";
-   x.style.font-size="50px";
-   x.innerHTML=y.value+"YOU ARE FOOLED";
+   var y=document.getElementById("nm");
+   var z=y.value+"YOU ARE FOOLED";
+   document.write("<p style='color:red;font-size:50px;'><strong>"+z+"</strong></p>"
   }
  </script>
 </head>
@@ -19,9 +17,8 @@
  <input id="nm" type="text" name="name" />
  <p style="color:red;font-size:40px">
  Enter it!</p>
- <button type="button" onclick="sayYouAreFooled();window.history.back(-1);;">Submit</button>
+ <button type="button" onclick="sayYouAreFooled();">Submit</button>
  <pre>&emsp;</pre>
  <a href="index.html" style="font-size:20px;color:orange;padding:10px;">Back</a>
- <p id="fooled" style="color:white;font-size:20px"><strong>YOU ARE FOOLED</strong></p>
 </body>
 </html>
