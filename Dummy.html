@@ -2,6 +2,16 @@
 <head>
  <title>a game</title>
  <link rel="stylesheet" type="text/css" href="styleindex.css" />
+ <script>
+  function sayYouAreFooled()
+  {
+   x=document.getElementById("fooled");
+   y=document.getElementById("nm");
+   x.style.color="red";
+   x.style.font-size="50px";
+   x.innerHTML=y.value+"YOU ARE FOOLED";
+  }
+ </script>
 </head>
 <body>
  <h1>A game</h1>
@@ -13,14 +23,5 @@
  <pre>&emsp;</pre>
  <a href="index.html" style="font-size:20px;color:orange;padding:10px;">Back</a>
  <p id="fooled" style="color:white;font-size:20px"><strong>YOU ARE FOOLED</strong></p>
- <script>
-  function sayYouAreFooled()
-  {
-   x=document.getElementById("fooled");
-   y=document.getElementById("nm");
-   x.style.color="red";
-   x.style.font-size="50px";
-   x.innerHTML=y.value "YOU ARE FOOLED";
-  }
 </body>
 </html>
