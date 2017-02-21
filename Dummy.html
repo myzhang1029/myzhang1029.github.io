@@ -1,6 +1,10 @@
-<<<<<<< HEAD
+<!DOCTYPE html>
 <html>
  <head>
+  <meta name="author" content="Zhang Maiyun" />
+  <meta name="keyword" content="game,dummy,fool" />
+  <meta name="description" content="fooling page of my site" />
+  <meta charset="utf-8" />
   <title>a game</title>
   <link rel="stylesheet" type="text/css" href="styleindex.css" />
   <script>
@@ -9,6 +13,8 @@
     var y=document.getElementById("nm");
     document.write("<p style='color:red;font-size:50px;'><strong>"+y.vaule+"</strong></p>");
     document.write("<p style='color:red;font-size:50px;'><strong>You are fooled</strong></p>");
+    document.write("<p style='color:green;font-size:50px;' onclick='location.reload();'><strong>Replay</strong></p>");
+    document.write("<p style='color:orange;font-size:50px;' onclick='window.history.back();'><strong>Back</strong</p>");
    }
   </script>
  </head>
@@ -22,31 +28,4 @@
   <pre>&emsp;</pre>
   <a href="index.html" style="font-size:20px;color:orange;padding:10px;">Back</a>
  </body>
-=======
- <html>
-<head>
- <title>a game</title>
- <link rel="stylesheet" type="text/css" href="styleindex.css" />
- <script>
-  function Fooled()
-  {
-   y=document.getElementById("nm");
-   document.write("<p style='color:red;font-size:50px;'><strong>"+y.vaule+"</strong></p>");
-   document.write("<p style='color:red;font-size:50px;'><strong>You are fooled</strong></p>");
-   document.write("<p style='color:green;font-size:50px' onclick='location.reload();'>Play again</p>");
-   document.write("<p style='olor:orange;font-size:50px' onclick='window.history.back();'>Back</p>");
-  }
- </script>
-</head>
-<body>
- <h1>A game</h1>
- <p>NAME:</p>
- <input id="nm" type="text" name="name" vaule="name" />
- <p style="color:red;font-size:40px">
- Enter it!</p>
- <button type="button" onclick="Fooled();">Submit</button>
- <pre>&emsp;</pre>
- <a href="index.html" style="font-size:20px;color:orange;padding:10px;">Back</a>
-</body>
->>>>>>> origin/master
 </html>
