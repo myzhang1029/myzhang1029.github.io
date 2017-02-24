@@ -28,6 +28,9 @@ body{
   
 }
 
-.tabselecter{
+.tabselect{
+ text-align:center;
  background-color:red;
- font-size:20px
+ color:white;
+ font-size:40px;
+}
