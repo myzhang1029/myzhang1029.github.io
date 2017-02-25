@@ -28,7 +28,7 @@ body{
   
 }
 
-.tabselect{
+div.tabselect p{
  text-align:center;
  background-color:red;
  color:white;
