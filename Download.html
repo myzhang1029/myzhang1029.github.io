@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <!--[if lt IE 9]>
+  <script src="html5shiv.js"></script>
+  <![endif]-->
   <meta name="author" content="Zhang Maiyun" />
   <meta name="keyword" content="download,slib,admin,library,C,c" />
   <meta name="description" content="Download page of my site" />
@@ -11,15 +14,16 @@
 
 
  <body>
-    <h1 >This page give the download link of my project</h1>
+  <h1 >This page give the download link of my project</h1>
   <pre>The following projects is distributed under <a href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL v3.0</a></pre>
   <p onclick="window.history.back();">Back</p>
-  <div>
-   <p style="text-align:center;background-color:red;color:white;font-size:40px" onclick="window.location.href='index.html';"> index </p>
-   <p style="text-align:center;background-color:red;color:white;font-size:40px" onclick="window.location.href='Download.html';"> Download </p>
-   <p style="text-align:center;background-color:red;color:white;font-size:40px" onclick="window.location.href='Dummy.html';"> Game </p>
-   <p style="text-align:center;background-color:red;color:white;font-size:40px" onclick="window.location.href='signup.html';"> _ </p>
-   <p style="text-align:center;background-color:red;color:white;font-size:40px" onclick="window.location.href='https://github.com/myzhang1029';"> My GitHub </p>
+
+  <div class="tabselect">
+   <p onclick="window.location.href='index.html';"> index </p>
+   <p onclick="window.location.href='Download.html';"> Download </p>
+   <p onclick="window.location.href='Dummy.html';"> Game </p>
+   <p onclick="window.location.href='signup.html';"> _ </p>
+   <p onclick="window.location.href='https://github.com/myzhang1029';"> My GitHub </p>
   </div>
 
   <br />
@@ -77,7 +81,7 @@ https://github.com/myzhang1029/slib.git</code></pre></div>
   <a href="https://github.com/myzhang1029/slib/raw/master/src/slib.h">slib.h</a>
   <br />
   </div>
- 
+
  </body>
 </html>
 
