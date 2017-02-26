@@ -13,7 +13,7 @@
   <script>
    function Fooled()
    {
-    document.write("<html><body><p style='color:red;font-size:50px;'><strong>You are fooled</strong></p>");
+    document.write("<html><body><p style='color:red;font-size:50px;'><strong>"+document.getElementById("nm").value+"You are fooled</strong></p>");
     document.write("<p style='color:green;font-size:50px;' onclick='location.reload();'><strong>Replay</strong></p>");
     document.write("<p style='color:orange;font-size:50px;' onclick='window.history.back();'><strong>Back</strong</p></body></html>");
    }
@@ -29,7 +29,7 @@
   </div>
   <h1>A game</h1>
   <p>NAME:</p>
-  <input id="nm" type="text" name="name" />
+  <input id="nm" type="text" />
   
   <button type="button" onclick="Fooled();">Submit</button>
   <pre>&emsp;</pre>
