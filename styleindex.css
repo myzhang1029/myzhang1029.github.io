@@ -40,7 +40,7 @@ body{
  height:100%;
 }
 
-div.tabselect p{
+body > div.tabselect p{
  margin:0em 3em 0em 3em;
  padding:1px 1em 1px 1em;
  background-color:#0FF;
@@ -62,7 +62,7 @@ div.tabselect p{
  z-index:0;
 }
 
-div.paragraph{
+body > div.paragraph{
  height:80%;
  float:left;
  width:100%;
