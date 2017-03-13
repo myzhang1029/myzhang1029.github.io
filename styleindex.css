@@ -1,21 +1,21 @@
 p{
 font-size:1.25em;
-font-family:arial;
+font-family:arial,serif;
 }
 
 h1{
 text-align:center;
-font-family:arial;
+font-family:arial,serif;
 }
 
 pre code {
- font-family:Monaco,Courier New,monospace;
+ font-family:Monaco,Courier New,serif;
  font-size:0.75em;
 }
 
 pre {
  font-size:1.25em;
- font-family:arial;
+ font-family:arial,serif;
 }
 
 a:link{
@@ -41,7 +41,7 @@ body{
 }
 
 div.tabselect p{
- padding:3em;
+ padding:0em,3em;
  background-color:#0FF;
  color:#F50;
  font-size:1.25em;
@@ -52,7 +52,7 @@ div.tabselect p{
 .cpyrt{
  text-align:center;
  font-size:10px;
- font-family:arial;
+ font-family:arial,serif;
  font-style:italic;
  float:left;
  width:100%;
