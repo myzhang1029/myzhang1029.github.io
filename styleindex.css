@@ -30,12 +30,14 @@ a:visited {
 
 a:hover {
  font-size:1.25em;
- color:#FF00FF;
+ color:#F0F;
 }
 
 body{
  background-color:white;
  font-size:100%;
+ width:100%;
+ height:100%;
 }
 
 div.tabselect p{
@@ -43,6 +45,8 @@ div.tabselect p{
  background-color:#0FF;
  color:#F50;
  font-size:1.25em;
+ float:left;
+ z-index:0;
 }
 
 .cpyrt{
@@ -50,4 +54,15 @@ div.tabselect p{
  font-size:10px;
  font-family:arial;
  font-style:italic;
+ float:left;
+ width:100%;
+ height:10%;
+ z-index:0;
 }
+
+div.paragraph{
+ height:80%;
+ float:left;
+ width:100%;
+}
+ 
