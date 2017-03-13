@@ -41,7 +41,7 @@ body{
 }
 
 div.tabselect p{
- text-align:center;
+ padding:10em;
  background-color:#0FF;
  color:#F50;
  font-size:1.25em;
