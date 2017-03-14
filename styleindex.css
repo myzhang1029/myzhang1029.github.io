@@ -41,13 +41,13 @@ body{
 }
 
 body > div.tabselect{
- margin:0em 3em 0em 3em;
- background-color:#0FF;
  color:#F50;
  font-size:1.25em;
  height:10%;
 }
 body > div.tabselect p{
+ margin:0em 3em 0em 3em;
+ background-color:#0FF;
  float:left;
  z-index:0;
 }
