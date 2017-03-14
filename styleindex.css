@@ -42,12 +42,9 @@ body{
 
 body > div.tabselect{
  margin:0em 3em 0em 3em;
- padding:1px 1em 1px 1em;
  background-color:#0FF;
  color:#F50;
  font-size:1.25em;
- float:left;
- z-index:0;
  height:10%;
 }
 body > div.tabselect p{
