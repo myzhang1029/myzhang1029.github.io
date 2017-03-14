@@ -50,7 +50,10 @@ body > div.tabselect{
  z-index:0;
  height:10%;
 }
-
+body > div.tabselect p{
+ float:left;
+ z-index:0;
+}
 .cpyrt{
  text-align:center;
  font-size:10px;
