@@ -13,7 +13,12 @@
   <script>
    function Fooled()
    {
-    document.write("<html><body><p style='color:red;font-size:50px;'><strong>"+document.getElementById("nm").value+", You are fooled</strong></p>");
+    document.write("<html><body><p style='color:red;font-size:50px;'><strong>"+document.getElementById("nm").value);
+    if(document.getElementById("nm").vaule.lenth==0)
+     document.write("Blank User");
+    else
+     document.write(", ");
+    document.write("You are fooled</strong></p>");
     document.write("<p style='color:green;font-size:50px;' onclick='location.reload();'><strong>Replay</strong></p>");
     document.write("<p style='color:orange;font-size:50px;' onclick='window.history.back();'><strong>Back</strong</p></body></html>");
    }
