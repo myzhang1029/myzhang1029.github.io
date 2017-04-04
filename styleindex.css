@@ -43,14 +43,15 @@ body{
 body > div.tabselect{
  height:10%;
 }
-body > div.tabselect p{
+
+body > div.tabselect p,span{
  width:10%;
  font-size:1.25em;
  color:#F50;
  padding:0em 3em 0em 3em;
  border:1px solid #F70;
  background-color:#0FF;
- float:left;
+ float:none;
  z-index:0;
 }
 .cpyrt{
