@@ -8,6 +8,15 @@
   <meta name="keyword" content="login" />
   <meta name="description" content="login page of my site" />
   <meta charset="utf-8" />
+  <script src="jquery.js" ></script>
+  <script>
+   $(document).ready(function(){
+    $("div.tabselect p").fadeOut();
+    $("div.tabselect span").click(function(){
+    $("div.tabselect p").fadeToggle();
+    });
+   });
+  </script>
   <title>Login page</title>
 
   <link rel="stylesheet" type="text/css" href="styleindex.css" />
@@ -16,6 +25,7 @@
 
  <body>
   <div class="tabselect">
+   <span>Menu</span>
    <p onclick="window.location.href='index.html';"> index </p>
    <p onclick="window.location.href='Download.html';"> Projects </p>
    <p onclick="window.location.href='Dummy.html';"> Game </p>
