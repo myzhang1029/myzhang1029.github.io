@@ -40,8 +40,8 @@ body{
  height:100%;
 }
 
-body > div.tabselect{
- height:10%;
+body > div.tabselect p{
+ display:none;
 }
 
 body > div.tabselect p,span{
