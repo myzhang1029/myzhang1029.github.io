@@ -1,4 +1,4 @@
 function fademenu()
 {
-$("div.tabselect").fadeToggle();
+$("div.tabselect p").fadeToggle();
 }
