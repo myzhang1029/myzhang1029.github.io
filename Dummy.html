@@ -12,7 +12,7 @@
   <script>
    $(document).ready(function(){
     $("div.tabselect span").click(function(){
-    $("div.tabselect p").fadeToggle();
+    $("div.tabselect p").slideToggle();
     });
    });
   </script>
@@ -23,12 +23,16 @@
    {
     document.write("<html><body><p style='color:red;font-size:50px;'><strong>"+document.getElementById("nm").value);
     if(document.getElementById("nm").vaule.lenth==0)
-     document.write("Blank User");
+    {
+     document.write("< style='color:red;-size:50px'> Blank User</p></html>");
+    }
     else
+    {
      document.write(", ");
     document.write("You are fooled</strong></p>");
     document.write("<p style='color:green;font-size:50px;' onclick='location.reload();'><strong>Replay</strong></p>");
     document.write("<p style='color:orange;font-size:50px;' onclick='window.history.back();'><strong>Back</strong</p></body></html>");
+    }
    }
   </script>
  </head>
