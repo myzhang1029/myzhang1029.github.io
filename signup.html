@@ -11,8 +11,9 @@
   <script src="jquery.js" ></script>
   <script>
    $(document).ready(function(){
-    $("div.tabselect span").click(function(){
-    $("div.tabselect p").slideToggle();
+    $("div.tabselect p.button").show();
+    $("div.tabselect p.button").click(function(){
+    $("div.tabselect p:not(.button)").slideToggle();
     });
    });
   </script>
@@ -24,7 +25,7 @@
 
  <body>
   <div class="tabselect">
-   <span>Menu</span>
+   <p class="button">Menu</p>
    <p onclick="window.location.href='index.html';"> index </p>
    <p onclick="window.location.href='Download.html';"> Projects </p>
    <p onclick="window.location.href='Dummy.html';"> Game </p>
