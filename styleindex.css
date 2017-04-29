@@ -59,7 +59,7 @@ body{
  display:none;
 }
 
-.tabselect{
+.tabselect > p,span{
  width:100%;
  font-size:1.25em;
  text-align:center;
@@ -69,6 +69,7 @@ body{
  background-color:#0FF;
  float:none;
  z-index:0;
+ font-weight:bold;
 }
 .cpyrt{
  text-align:center;
