@@ -59,12 +59,13 @@ body > div.tabselect p{
  display:none;
 }
 
-.tabselect > p,span{
+body > div.tabselect > p,span{
  width:100%;
  font-size:1.25em;
  text-align:center;
  color:#F50;
- margin:0 3em 0 3em;
+ margin:0 1em 0 1em;
+ padding 0.5em;
  border:1px solid #F70;
  background-color:#0FF;
  float:none;
