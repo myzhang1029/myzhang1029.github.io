@@ -55,7 +55,7 @@ body{
  height:100%;
 }
 
-.tabselect p{
+body > div.tabselect p{
  display:none;
 }
 
