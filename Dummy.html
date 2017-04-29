@@ -13,7 +13,7 @@
    $(document).ready(function(){
     $("div.tabselect p.button").show();
     $("div.tabselect p.button").click(function(){
-    $("div.tabselect p").slideToggle();
+    $("div.tabselect p:not(.button)").slideToggle();
     });
    });
   </script>
