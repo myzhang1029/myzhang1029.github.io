@@ -13,7 +13,7 @@ pre code {
  font-size:0.75em;
  border-radius:10px;
  border-width:1px;
- border-color:rgb(16,48,0);
+ border-color:#0FF;
  border-style:solid;
  padding:0.6em;
  background-color:#A9F5F2;
@@ -56,7 +56,7 @@ body > div.tabselect > p,span{
  text-align:center;
  color:#F50;
  margin:0 1em 0 1em;
- padding 0.5em;
+ padding:0.5em;
  border:1px solid #F70;
  background-color:#0FF;
  float:none;
