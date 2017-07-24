@@ -11,10 +11,18 @@ font-family:arial,serif;
 pre code {
  font-family:Monaco,Courier New,serif;
  font-size:0.75em;
- border-radius:10px;
- border-width:1px;
- border-color:#0FF;
- border-style:solid;
+ border-radius: 10px;
+ -webkit-border-radius: 10px;
+ -moz-border-radius: 10px;
+ border-width: 1px;
+ border-color: rgb(16,48,0);
+ border-style: solid;
+ padding: 0.6em;
+ padding-left: 1em;
+ margin-left: 5%;
+ margin-right: 8%;
+ overflow: auto;
+ color: #229A96;
  padding:0.6em;
  background-color:#A9F5F2;
 }
