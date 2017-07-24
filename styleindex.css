@@ -11,7 +11,7 @@ font-family:arial,serif;
 pre code {
  font-family:Monaco,Courier New,serif;
  font-size:0.75em;
- overflow: auto;
+ overflow: scroll;
  color: black;
  padding:0.6em;
  background-color:#A9F5F2;
