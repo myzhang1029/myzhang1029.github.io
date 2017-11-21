@@ -9,12 +9,13 @@ font-family:arial,serif;
 }
 
 pre code {
- font-family:Monaco,Courier New,serif;
- font-size:0.75em;
- overflow: scroll;
- color: black;
- margin:100% 0em;
- background-color:#A9F5F2;
+ -webkit-overflow-scrolling:touch;
+ font-family:"Courier New", monospace, Monaco, serif;
+ font-size:0.9em;
+ margin:0 0 2em 0;
+ display:block;
+ padding:1em 1.5em;
+ overflow-x:auto;
 }
 
 pre {
