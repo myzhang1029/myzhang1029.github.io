@@ -48,7 +48,7 @@ body > div.tabselect p{
 }
 
 body > div.paragraph > div.tabselect > p{
- width:100%;
+ width:90%;
  height:80px;
  font-size:70px;
  text-align:center;
@@ -63,7 +63,7 @@ body > div.paragraph > div.tabselect > p{
 }
 
 body > div.tabselect > p,span{
- width:100%;
+ width:90%;
  height:1.5em;
  font-size:1.25em;
  text-align:center;
