@@ -6,29 +6,24 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-<style>
+	<style>
 body {
-	    padding: 0;
-		        margin: 0;
+	padding:0;
+	margin:0;
 }
-	html, body, #mapid {
-		    height: 100%;
-			        width: 100vw;
-	}
-</style>
+html, body, #mapid {
+	height:100%;
+	width: 100vw;
+}
+	</style>
 </head>
 <body>
-
-
-
-<div id="mapid" style="width: 600px; height: 400px;"></div>
+<div id="mapid"></div>
 <script>
 /* The map */
 	var mymap = L.map('mapid').fitWorld();
@@ -49,14 +44,13 @@ body {
 
 	mymap.on('click', onMapClick);
 	mymap.locate({setView: true, maxZoom: 16});
-var lc = L.control.locate({ locateOptions: {
-		flyTo: true,
-	enableHighAccuracy: true,
-	drawCircle: true}}).addTo(mymap);
-	lc.start();
+	var lc = L.control.locate({
+		locateOptions: {
+			flyTo: true,
+			enableHighAccuracy: true,
+			drawCircle: true
+		}
+	}).addTo(mymap);
 </script>
-
-
-
 </body>
 </html>
