@@ -26,9 +26,23 @@ html, body, #mapid {
 <div id="mapid"></div>
 <script>
 /* The map */
+	function getUrlParam(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r != null) {
+			return decodeURI(r[2]);
+		}
+		return null;
+	}
+	var tileserver = getUrlParam("tile");
+	if (tileserver == null) {
+		tileserver = 'http://tile.openstreetmap.org/{z}/{x}/{y}.png';
+	}
+	document.write("Your tile server: " + tileserver);
+
 	var mymap = L.map('mapid').fitWorld();
 
-	L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	L.tileLayer(tileserver, {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 	}).addTo(mymap);
