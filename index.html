@@ -4,23 +4,31 @@
   <!--[if lt IE 9]>
   <script src="https://raw.githubusercontent.com/aFarkas/html5shiv/master/src/html5shiv.js"></script>
   <![endif]-->
-  <meta name="author" content="Zhang Maiyun" />
-  <meta name="keyword" content="index,github" />
-  <meta name="description" content="index page of my site" />
   <meta charset="utf-8" />
-  <title>Myzhang1029's site</title>
+  <title>Front page | myzhang1029</title>
 
   <link rel="stylesheet" type="text/css" href="styleindex.css" />
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" ></script>
+  <script>
+   $(document).ready(function(){
+    $("div.tabselect p.button").show();
+    $("div.tabselect p.button").click(function(){
+    $("div.tabselect p:not(.button)").slideToggle();
+    });
+   });
+  </script>
  </head>
 
  <body>
-  <div class="paragraph">
-  <h2 style="font-size:90px"> Welcome to my page! </h2>
+  <h2 style="font-size:90px"> Welcome to myzhang1029! </h2>
   <div class="tabselect">
+   <p class="button">Menu</p>
+   <p onclick="window.location.href='index.html';"> index </p>
    <p onclick="window.location.href='Download.html';"> Projects </p>
-   <p onclick="window.location.href='https://myzhang1029.github.io/re';">Resources</p>
+   <p onclick="window.location.href='re/';">Resources</p>
    <p onclick="window.location.href='https://github.com/myzhang1029';"> My GitHub </p>
   </div>
+  <div class="paragraph">
   </div>
   <footer><pre class="cpyrt">(c) 2017, Zhang Maiyun, all rights reserved. <a
      href="mailto:&#109;&#121;&#122;&#104;&#97;&#110;&#103;&#49;&#48;&#50;&#57;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;?subject=User's opinion">
