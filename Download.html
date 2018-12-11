@@ -22,9 +22,11 @@
  <body>
   <div class="tabselect">
    <p class="button">Menu</p>
-   <p onclick="window.location.href='index.html';"> index </p>
+   <p onclick="window.location.href='index.html';"> Home </p>
    <p onclick="window.location.href='Download.html';"> Projects </p>
    <p onclick="window.location.href='re/';">Resources</p>
+   <p onclick="window.location.href='blog';">Blog</p>
+   <p onclick="window.location.href='mnbag';">My Math Notebook</p>
    <p onclick="window.location.href='https://github.com/myzhang1029';"> My GitHub </p>
   </div>
   <div class="paragraph">
@@ -44,33 +46,23 @@
       $ make
       $ sudo make install
    </code></pre>
-   <p>or use xmake(please go to <a href="slib/">project page</a>)</p>
-  </div>
-
-  <div> admin:
-    <pre><code>
-      $ git clone git://github.com/myzhang/admin.git
-      $ make
-    </code></pre>
-    <p>Please install slib and install self manually</p>
+   <p>or use CMake(please go to <a href="slib/">project page</a>)</p>
   </div>
 
   <div>library:
     <pre><code>
       $ git clone --recursive git://github.com/myzhang1029/library.git
-      $ make (win|unix)
+      $ ./configure
+      $ make
       $ sudo make install
     </code></pre>
+    <p>Please install slib first.</p>
   </div>
 
   <br />
   <div>
     <h1 style="text-align:left;">Binary:</h1>
-    <p>Warning: These binaries maybe not being updated on time.</p>
-    <h3>admin</h3>
-    <a href="https://github.com/myzhang1029/admin/releases">admin</a>
-    <br />
-
+    <p>Warning: These binaries aren't updated now.</p>
     <h3>library</h3>
     <a href="https://github.com/myzhang1029/library/releases">library</a>
     <br />
