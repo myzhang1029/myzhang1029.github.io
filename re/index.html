@@ -2,26 +2,18 @@
  <head>
   <meta charset="utf-8" />
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" ></script>
-  <script>
-   $(document).ready(function(){
-    $("div.tabselect p.button").show();
-    $("div.tabselect p.button").click(function(){
-    $("div.tabselect p:not(.button)").slideToggle();
-    });
-   });
-  </script>
   <title>Resources | myzhang1029</title>
   <link rel="stylesheet" type="text/css" href="../styleindex.css" />
  </head>
  <body>
-  <div class="tabselect">
-   <p class="button">Menu</p>
-   <p onclick="window.location.href='/index.html';"> Home </p>
-   <p onclick="window.location.href='/Download.html';"> Projects </p>
-   <p onclick="window.location.href='/re/';">Resources</p>
-   <p onclick="window.location.href='/blog/';">Blog</p>
-   <p onclick="window.location.href='/mnbag/';">My Math Notebook</p>
-   <p onclick="window.location.href='https://github.com/myzhang1029';"> My GitHub </p>
+  <a class="button" href="javascript:$('div.tabs').slideToggle();"> Menu </a>
+  <div class="tabs">
+   <a href="/index.html"> Home </a>
+   <a href="/Download.html"> Projects </a>
+   <a href="/re/"> Resources </a>
+   <a href="/blog/"> Blog </a>
+   <a href="/mnbag/"> My Math Notebook </a>
+   <a href="https://github.com/myzhang1029';"> My GitHub </a>
   </div>
   <h1>Index of /re:</h1>
   <ul>
