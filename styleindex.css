@@ -55,10 +55,14 @@ a.button, .tabs a {
  color:#F7F7F7;
  padding:0.5em 1.5em 0.5em 1.5em;
  border:3px solid #F70;
+ border-top:0;
  background-color:#464646;
  font-weight:bold;
  display: block;
  text-decoration: none;
+}
+a.button, .index a:first-child {
+  border-top:3px solid #F70;
 }
 
 .cpyrt{
