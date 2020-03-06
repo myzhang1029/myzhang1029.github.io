@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <!-- add the shim first -->
+        <script type="text/javascript" src="xlsx/shim.min.js"></script>
+        <!-- after the shim is referenced, add the library -->
+        <script type="text/javascript" src="xlsx/xlsx.min.js"></script>
+        <script>
+            function main() {
+                var url = document.getElementById("url").value;
+                var list = readxls(url);
+                var done = kickrep(list);
+                document.getElementById("out").innerHTML = done;
+            }
+            function readxls(url) {
+                var req = new XMLHttpRequest();
+                req.open("GET", url, true);
+                req.responseType = "arraybuffer";
+
+                req.onload = function(e) {
+                    var data = new Uint8Array(req.response);
+                    var wb = XLSX.read(data, { type: "array" });
+                    var sheetname = wb.SheetNames[0];
+                    var sheet = workbook.Sheets[sheetname];
+                    for(var R = 1; R <= range.e.r; ++R) {
+                        for(var C = 6; C < 10; ++C) {
+                            var cell_address = {c:C, r:R};
+                            var cell_ref = XLSX.utils.encode_cell(cell_address);
+                        }
+                    }
+                    document.getElementById("out").innerHTML=sheet["A1"].v;
+                }
+                req.send();
+            }
+        </script>
+    </head>
+    <body>
+        <label for="url">URL:</label>
+        <input type="url" id="url" />
+        <button name="button" onclick="main()"></button>
+        <div id="out"></div>
+    </body>
+</html>
