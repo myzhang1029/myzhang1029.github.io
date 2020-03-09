@@ -3,9 +3,9 @@
 /**
  * static files (404.html, sw.js, conf.js)
  */
-const ASSET_URL = 'https://myzhang1029.github.io/jsp';
+const ASSET_URL = 'https://myzhang1029.github.io/jspx';
 
-const JS_VER = 10;
+const JS_VER = 21;
 const MAX_RETRY = 1;
 
 /** @type {RequestInit} */
@@ -17,6 +17,12 @@ const PREFLIGHT_INIT = {
     'access-control-max-age': '1728000',
   }),
 };
+
+addEventListener('fetch', e => {
+  const ret = fetchHandler(e)
+    .catch(err => makeRes('cfworker error:\n' + err.stack, 502));
+  e.respondWith(ret);
+})
 
 /**
  * @param {any} body
@@ -41,14 +47,6 @@ function newUrl(urlStr) {
   }
 }
 
-
-addEventListener('fetch', e => {
-  const ret = fetchHandler(e)
-    .catch(err => makeRes('cfworker error:\n' + err.stack, 502));
-  e.respondWith(ret);
-})
-
-
 /**
  * @param {FetchEvent} e 
  */
@@ -66,20 +64,20 @@ async function fetchHandler(e) {
     });
   }
 
-  if (path.startsWith('/http/')) {
-    return httpHandler(req, path.substr(6));
+  if (path.startsWith('/assets/')) {
+    // static files
+    return fetch(ASSET_URL + path);
   }
 
   switch (path) {
-  case '/http':
-    return makeRes('请更新 cfworker 到最新版本!');
-  case '/ws':
-    return makeRes('Not supported!', 400);
-  case '/works':
-    return makeRes('It works!');
-  default:
-    // static files
-    return fetch(ASSET_URL + path);
+    case '/ws':
+      return makeRes('Not supported!', 400);
+    case '/works':
+      return makeRes('It works!');
+    case '/':
+      return fetch(ASSET_URL + "/assets/index_v3.html");
+    default:
+      return httpHandler(req, path.substr(6));
   }
 }
 
@@ -111,35 +109,37 @@ function httpHandler(req, pathname) {
 
   // 此处逻辑和 http-dec-req-hdr.lua 大致相同
   // https://github.com/EtherDream/jsproxy/blob/master/lua/http-dec-req-hdr.lua
-  const refer = reqHdrNew.get('referer');
-  const query = refer.substr(refer.indexOf('?') + 1);
-  if (!query) {
-    return makeRes('missing params', 403);
-  }
-  const param = new URLSearchParams(query);
+  const referer = reqHdrNew.get('referer');
+  if (referer) {
+    const query = referer.substr(referer.indexOf('?') + 1);
+    if (!query) {
+      return makeRes('missing params', 403);
+    }
+    const param = new URLSearchParams(query);
 
-  for (const [k, v] of Object.entries(param)) {
-    if (k.substr(0, 2) === '--') {
-      // 系统信息
-      switch (k.substr(2)) {
-      case 'aceh':
-        acehOld = true;
-        break;
-      case 'raw-info':
-        [rawSvr, rawLen, rawEtag] = v.split('|');
-        break;
-      }
-    } else {
-      // 还原 HTTP 请求头
-      if (v) {
-        reqHdrNew.set(k, v);
+    for (const [k, v] of Object.entries(param)) {
+     if (k.substr(0, 2) === '--') {
+        // 系统信息
+        switch (k.substr(2)) {
+        case 'aceh':
+          acehOld = true;
+          break;
+        case 'raw-info':
+          [rawSvr, rawLen, rawEtag] = v.split('|');
+          break;
+        }
       } else {
-        reqHdrNew.delete(k);
+        // 还原 HTTP 请求头
+        if (v) {
+          reqHdrNew.set(k, v);
+        } else {
+          reqHdrNew.delete(k);
+        }
       }
     }
-  }
-  if (!param.has('referer')) {
-    reqHdrNew.delete('referer');
+    if (!param.has('referer')) {
+      reqHdrNew.delete('referer');
+    }
   }
 
   // cfworker 会把路径中的 `//` 合并成 `/`
