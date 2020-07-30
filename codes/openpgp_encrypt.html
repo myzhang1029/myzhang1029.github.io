@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html charset="utf-8">
+<html lang="en" charset="utf-8">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <title>Web-based OpenPGP en/decryption</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/openpgp/4.6.2/openpgp.min.js" integrity="sha256-txcrHjb7Yt1zrebRnGkk5OwDkoBrvJTjvJx5b7qBtWc=" crossorigin="anonymous"></script>
+    <script src="openpgp_encrypt.js"></script>
     <style>
       label {
         font-size: 1em;
@@ -37,107 +39,8 @@
     </style>
   </head>
   <body>
-    <script>
-    function loadHandler() {
-      storage = window.localStorage;
-      peerkey = storage.getItem("peerkey");
-      if (peerkey) {
-        document.getElementById("pubkey").value = peerkey;
-      }
-      document.getElementById("result").value = "";
-    }
-    document.addEventListener('DOMContentLoaded', loadHandler, false);
-    async function showGenTab() {
-      document.getElementById("gendetails").style.display = "block";
-    }
-    async function generate() {
-      var options = {
-        userIds: [{
-          name: document.getElementById("name").value,
-          email:document.getElementById("email").value
-        }],
-        numBits: 4096,
-        passphrase: document.getElementById("pp").value
-      };
-      document.getElementById("gendetails").style.display = "none";
-      openpgp.generateKey(options).then(function(key) {
-        var privkey = key.privateKeyArmored;
-        var pubkey = key.publicKeyArmored;
-        var revocationSignature = key.revocationSignature;
-        storage = window.localStorage;
-        storage.setItem("myprivkey", privkey);
-        storage.setItem("mypubkey", pubkey);
-        storage.setItem("revocation", revocationSignature);
-        showPubKey();
-      });
-    }
-    async function showPubKey() {
-      storage = window.localStorage;
-      mypub = storage.getItem("mypubkey");
-      if (mypub) {
-        document.getElementById("result").value = mypub;
-      } else {
-        document.getElementById("result").value = "Not generated!";
-      }
-    }
-    async function encrypt() {
-      storage = window.localStorage;
-      peerkey = document.getElementById("pubkey").value;
-      message = document.getElementById("ta").value;
-      if (!peerkey) {
-        document.getElementById("result").value = "Please fill out the key!";
-        return;
-      }
-      storage.setItem("peerkey", peerkey);
-      var options = {
-        message: openpgp.message.fromText(message),
-        publicKeys: (await openpgp.key.readArmored(peerkey)).keys
-      };
-      openpgp.encrypt(options).then(ciphertext => {
-        document.getElementById("result").value = ciphertext.data;
-      });
-    }
-    async function decrypt() {
-      storage = window.localStorage;
-      privkey = storage.getItem("myprivkey");
-      message = document.getElementById("ta").value;
-      if (!privkey || !pubkey) {
-        document.getElementById("result").value = "Please generate keys first!";
-        return;
-      }
-      passphrase = window.prompt("Your passphrase (leave out for none):");
-      const privKeyObj = (await openpgp.key.readArmored(privkey)).keys[0];
-      if (passphrase) {
-        await privKeyObj.decrypt(passphrase);
-      }
-      var options = {
-        message: await openpgp.message.readArmored(message),
-        privateKeys: [privKeyObj]
-      };
-      openpgp.decrypt(options).then(plaintext => {
-        document.getElementById("result").value = plaintext.data;
-      });
-    }
-    async function clearResult() {
-      document.getElementById("result").value = "";
-      document.getElementById("ta").value = "";
-    }
-    async function forgetEverything() {
-      window.localStorage.clear();
-      clearResult();
-      document.getElementById("pubkey").value = "";
-    }
-    async function wrap(f) {
-      try {
-        document.getElementById("result").value = "Please wait...";
-        await eval(f+"()");
-      } catch (e) {
-        document.getElementById("result").value = e;
-      }
-    }
-    </script>
     <h1>Web-based OpenPGP en/decryption</h1>
-    <table>
+    <table role="presentation">
       <tr>
         <td>
           <label for="ta">Text to encrypt/decrypt:<br /></label>
@@ -149,7 +52,7 @@
         </td>
       </tr>
     </table>
-    <table>
+    <table role="presentation">
       <tr>
         <td><button class="btn" id="gen" type="button" onclick="wrap('showGenTab');">Generate keys</button></td>
         <td><button class="btn" id="show" type="button" onclick="wrap('showPubKey');">Show my public key</button></td>

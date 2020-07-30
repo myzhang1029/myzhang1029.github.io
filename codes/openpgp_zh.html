@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html charset="utf-8">
+<html lang="zh_CN" charset="utf-8">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <title>OpenPGP网页加解密</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/openpgp/4.6.2/openpgp.min.js" integrity="sha256-txcrHjb7Yt1zrebRnGkk5OwDkoBrvJTjvJx5b7qBtWc=" crossorigin="anonymous"></script>
+    <script>
+      var data = {
+        nopeerkey: "请输入对方的公钥",
+        noselfkey: "请先生成密钥",
+        askpass: "请输入密码（无则留空）",
+        not_generated: "尚未生成！",
+        waitplz: "请稍等……"
+      };
+    </script>
+    <script src="openpgp_encrypt.js"></script>
     <style>
       label {
         font-size: 1em;
@@ -37,107 +48,8 @@
     </style>
   </head>
   <body>
-    <script>
-    function loadHandler() {
-      storage = window.localStorage;
-      peerkey = storage.getItem("peerkey");
-      if (peerkey) {
-        document.getElementById("pubkey").value = peerkey;
-      }
-      document.getElementById("result").value = "";
-    }
-    document.addEventListener('DOMContentLoaded', loadHandler, false);
-    async function showGenTab() {
-      document.getElementById("gendetails").style.display = "block";
-    }
-    async function generate() {
-      var options = {
-        userIds: [{
-          name: document.getElementById("name").value,
-          email:document.getElementById("email").value
-        }],
-        numBits: 4096,
-        passphrase: document.getElementById("pp").value
-      };
-      document.getElementById("gendetails").style.display = "none";
-      openpgp.generateKey(options).then(function(key) {
-        var privkey = key.privateKeyArmored;
-        var pubkey = key.publicKeyArmored;
-        var revocationSignature = key.revocationSignature;
-        storage = window.localStorage;
-        storage.setItem("myprivkey", privkey);
-        storage.setItem("mypubkey", pubkey);
-        storage.setItem("revocation", revocationSignature);
-        showPubKey();
-      });
-    }
-    async function showPubKey() {
-      storage = window.localStorage;
-      mypub = storage.getItem("mypubkey");
-      if (mypub) {
-        document.getElementById("result").value = mypub;
-      } else {
-        document.getElementById("result").value = "尚未生成！";
-      }
-    }
-    async function encrypt() {
-      storage = window.localStorage;
-      peerkey = document.getElementById("pubkey").value;
-      message = document.getElementById("ta").value;
-      if (!peerkey) {
-        document.getElementById("result").value = "请在右侧填对方公钥！";
-        return;
-      }
-      storage.setItem("peerkey", peerkey);
-      var options = {
-        message: openpgp.message.fromText(message),
-        publicKeys: (await openpgp.key.readArmored(peerkey)).keys
-      };
-      openpgp.encrypt(options).then(ciphertext => {
-        document.getElementById("result").value = ciphertext.data;
-      });
-    }
-    async function decrypt() {
-      storage = window.localStorage;
-      privkey = storage.getItem("myprivkey");
-      message = document.getElementById("ta").value;
-      if (!privkey || !pubkey) {
-        document.getElementById("result").value = "请先生成密钥！";
-        return;
-      }
-      passphrase = window.prompt("密码（若无则留空）");
-      const privKeyObj = (await openpgp.key.readArmored(privkey)).keys[0];
-      if (passphrase) {
-        await privKeyObj.decrypt(passphrase);
-      }
-      var options = {
-        message: await openpgp.message.readArmored(message),
-        privateKeys: [privKeyObj]
-      };
-      openpgp.decrypt(options).then(plaintext => {
-        document.getElementById("result").value = plaintext.data;
-      });
-    }
-    async function clearResult() {
-      document.getElementById("result").value = "";
-      document.getElementById("ta").value = "";
-    }
-    async function forgetEverything() {
-      window.localStorage.clear();
-      clearResult();
-      document.getElementById("pubkey").value = "";
-    }
-    async function wrap(f) {
-      try {
-        document.getElementById("result").value = "请稍等...";
-        await eval(f+"()");
-      } catch (e) {
-        document.getElementById("result").value = e;
-      }
-    }
-    </script>
     <h1>OpenPGP网页加解密</h1>
-    <table>
+    <table role="presentation">
       <tr>
         <td>
           <label for="ta">信息/密文：<br /></label>
@@ -149,12 +61,13 @@
         </td>
       </tr>
     </table>
-    <table>
+    <table role="presentation">
       <tr>
         <td><button class="btn" id="gen" type="button" onclick="wrap('showGenTab');">生成密钥</button></td>
-        <td><button class="btn" id="show" type="button" onclick="wrap('showPubKey');">显示我的公钥</button></td>
         <td><button class="btn" id="enc" type="button" onclick="wrap('encrypt');">加密</button></td>
         <td><button class="btn" id="dec" type="button" onclick="wrap('decrypt');">解密</button></td>
+        <td><button class="btn" id="show" type="button" onclick="wrap('showPubKey');">显示我的公钥</button></td>
+        <td><button class="btn" id="show" type="button" onclick="wrap('showPeerInfo');">显示对方信息</button></td>
         <td><button class="btn" id="dec" type="button" onclick="wrap('clearResult');">清除</button></td>
         <td><button class="btn" id="dec" type="button" onclick="wrap('forgetEverything');">全部忘记</button></td>
       </tr>
