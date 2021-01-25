@@ -53,7 +53,7 @@ async function generate() {
 			name: document.getElementById("name").value,
 			email: document.getElementById("email").value
 		}],
-		numBits: 4096,
+		curve: 'ed25519',
 		passphrase: document.getElementById("pp").value
 	};
 	document.getElementById("gendetails").style.display = "none";
