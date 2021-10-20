@@ -2,15 +2,18 @@
   <head>
     <title> Solve a CAPTCHA</title>
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <style>
+button, .h-captcha {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.4em;
+  display: block;
+}
+    </style>
   </head>
   <body>
-    <form action="" method="POST">
-      <input type="text" placeholder="Anything" />
-      <div class="h-captcha" data-sitekey="3b0a8981-427f-4ac9-9e19-410122caffd1"></div>
-      <br />
-      <input type="submit" value="Submit" />
-    </form>
+    <div class="h-captcha" data-sitekey="3b0a8981-427f-4ac9-9e19-410122caffd1"></div>
+    <button onclick="window.location.reload();"> Another! </button>
   </body>
-</html>
-    </body>
 </html>
