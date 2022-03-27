@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
-	<title>Leaflet Test</title>
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
-	<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-	<style>
+    <title>Leaflet Test</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-plugins/3.4.0/layer/vector/KML.min.js" integrity="sha512-Lvgr0JRKIMOPpyrZxTpSTk23jmfkzHu9TQmsTS+o7XZnESnjuc62NWauzp/OmkaUjnqGkvFTWbDVs1swMrL6Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.76.0/L.Control.Locate.min.js" integrity="sha512-3mUIzmFDiuy7XdGjX5OfpjXnLK1XFBZ1S22ea0GYz14Q+OL5aHveYQxb12KLwD6mlwynNuXqee5SPvKRGJoNPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
 body {
-	padding:0;
-	margin:0;
+    padding:0;
+    margin:0;
 }
 html, body, #mapid {
-	height:100%;
-	width: 100vw;
+    height:100%;
+    width: 100vw;
 }
-	</style>
+    </style>
 </head>
 <body>
 <div id="mapid"></div>
 <script>
-/* The map */
-	function getUrlParam(name) {
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-		var r = window.location.search.substr(1).match(reg);
-		if(r != null) {
-			return decodeURI(r[2]);
-		}
-		return null;
-	}
-	var tileserver = getUrlParam("tile");
-	if (tileserver == null) {
-		tileserver = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-	}
-	document.write("Your tile server: " + tileserver);
+    /* The map */
+    function getUrlParam(name) {
+        const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        const r = window.location.search.substr(1).match(reg);
+        if(r != null) {
+            return decodeURI(r[2]);
+        }
+        return null;
+    }
+    let tileserver = getUrlParam("tile");
+    if (tileserver == null) {
+        tileserver = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+    }
+    document.write("Your tile server: " + tileserver);
 
-	var mymap = L.map('mapid').fitWorld();
+    let mymap = L.map('mapid').fitWorld();
 
-	L.tileLayer(tileserver, {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-	}).addTo(mymap);
+    L.tileLayer(tileserver, {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+    }).addTo(mymap);
 
-	var popup = L.popup();
+    let popup = L.popup();
 
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent(e.latlng.toString())
-			.openOn(mymap);
-	}
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent(e.latlng.toString())
+            .openOn(mymap);
+    }
 
-	mymap.on('click', onMapClick);
-	mymap.locate({setView: true, maxZoom: 16});
-	var lc = L.control.locate({
-		locateOptions: {
-			flyTo: true,
-			enableHighAccuracy: true,
-			drawCircle: true
-		}
-	}).addTo(mymap);
+    mymap.on('click', onMapClick);
+    mymap.locate({setView: true, maxZoom: 16});
+    let lc = L.control.locate({
+        locateOptions: {
+            flyTo: true,
+            enableHighAccuracy: true,
+            drawCircle: true
+        }
+    }).addTo(mymap);
 </script>
 </body>
 </html>
