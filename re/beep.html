@@ -19,6 +19,15 @@ const beep = (freq = 440, duration = 200, vol = 100) => {
     </head>
     <body>
         <h1>Beep</h1>
+        <h2>Step 1: Beep</h2>
         <button onclick="context = new AudioContext();beep()">Click to beep</button>
+        <h2>Step 2: HTML Audio</h2>
+        <audio controls>
+            <source src="test_audio/audio.ogg" type="audio/ogg">
+            <source src="test_audio/audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Step 3: Click this link and check</h2>
+        <a href="test_audio/audio.mp3">audio.mp3</a>
     </body>
 </html>
