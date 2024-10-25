@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Beep</title>
+        <script>
+let context = null;
+
+const beep = (freq = 440, duration = 200, vol = 100) => {
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.connect(gain);
+    oscillator.frequency.value = freq;
+    oscillator.type = "sine";
+    gain.connect(context.destination);
+    gain.gain.value = vol * 0.01;
+    oscillator.start(context.currentTime);
+    oscillator.stop(context.currentTime + duration * 0.001);
+}
+        </script>
+    </head>
+    <body>
+        <h1>Beep</h1>
+        <button onclick="context = new AudioContext();beep()">Click to beep</button>
+    </body>
+</html>
