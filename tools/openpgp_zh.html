@@ -21,6 +21,10 @@
         color: purple;
         margin-left: 0.3em;
       }
+      td.top {
+        padding: 0.5em;
+        width: 50%;
+      }
       textarea {
         font-size: 1em;
         text-align: left;
@@ -28,7 +32,9 @@
         width: 100%;
         border-radius: 20px;
         border: 2px solid green;
-        margin: 0.25em;
+      }
+      div #resultdiv {
+        padding: 0.5em;
       }
       textarea.result {
         width: 75%;
@@ -51,12 +57,18 @@
     <h1>OpenPGP网页加解密</h1>
     <table role="presentation">
       <tr>
-        <td>
-          <label for="ta">信息/密文：<br /></label>
+        <th>
+          <label for="ta">信息/密文</label>
+        </th>
+        <th>
+          <label for="pubkey">对方的公钥（仅用于加密）</label>
+        </th>
+      </tr>
+      <tr>
+        <td class="top">
           <textarea id="ta"></textarea>
         </td>
-        <td>
-          <label for="pubkey">对方的公钥（仅用于加密）：<br /></label>
+        <td class="top">
           <textarea id="pubkey"></textarea>
         </td>
       </tr>

@@ -12,6 +12,10 @@
         color: purple;
         margin-left: 0.3em;
       }
+      td.top {
+        padding: 0.5em;
+        width: 50%;
+      }
       textarea {
         font-size: 1em;
         text-align: left;
@@ -19,7 +23,9 @@
         width: 100%;
         border-radius: 20px;
         border: 2px solid green;
-        margin: 0.25em;
+      }
+      div #resultdiv {
+        padding: 0.5em;
       }
       textarea.result {
         width: 75%;
@@ -42,12 +48,18 @@
     <h1>Web-based OpenPGP en/decryption</h1>
     <table role="presentation">
       <tr>
-        <td>
-          <label for="ta">Text to encrypt/decrypt:<br /></label>
+        <th>
+          <label for="ta">Text to encrypt/decrypt</label>
+        </th>
+        <th>
+          <label for="pubkey">Public key of the peer (only for encryption)</label>
+        </th>
+      </tr>
+      <tr>
+        <td class="top">
           <textarea id="ta"></textarea>
         </td>
-        <td>
-          <label for="pubkey">Key (only for encrypting):<br /></label>
+        <td class="top">
           <textarea id="pubkey"></textarea>
         </td>
       </tr>
@@ -70,5 +82,6 @@
     </form>
     <h2 id="label-result">Result</h2>
     <div id="resultdiv"><textarea id="result" class="result" aria-labelledby="label-result"></textarea></div>
+    The entire process is in your browser. I don't even own a server.
   </body>
 </html>
